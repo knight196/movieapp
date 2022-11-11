@@ -1,0 +1,128 @@
+ // intro 
+  .anime-intro{
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+  
+    .images-flex{
+      display:flex;
+      position:absolute;
+      z-index:-1;
+      overflow:hidden;
+      filter: brightness(50%);
+      img{
+        width:50vw;
+        height:100vh;
+      }
+    }
+    .services{
+      display:flex;
+    flex-direction: column;
+      align-items: center;
+      height:100vh;
+      justify-content: center !important;
+    }
+  }
+  
+  .animeslideshow-container{
+    overflow:hidden;
+  }
+  .animeslideshow{
+    display:flex;
+    animation:slide-left 100s linear infinite;
+    scroll-behavior: smooth;
+    
+    img{
+      margin:auto 10px;
+    }
+  }
+  @keyframes slide-left{
+    0%{
+      transform:translateX(0)
+  }
+  100%{
+      transform:translateX(calc(-250px * 20));
+  }
+  }
+  .question {
+    margin:10px auto;
+    h4 {
+      text-transform: none;
+      line-height: 1.5;
+    }
+    p{
+      text-align: left;
+      padding:0 5px;
+      background:whitesmoke;
+    }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+       header h4 {
+        margin-bottom: 0;
+      }
+  
+      button{
+        border:none;
+        font-size: 20px;
+        font-weight: bold;
+        background:transparent;
+      }
+  }
+  .footer-info{
+    h5{
+      font-weight: bold;
+      font-size: 15px;
+    }
+  }
+  .social{
+    i{
+      font-size:30px;
+      color:white;
+      margin:10px;
+    }
+  }
+
+  
+  @include for-size(med-screen){
+    .anime-intro{
+      overflow:visible;
+      .images-flex{
+        img{
+          width:100%;
+        }
+      }
+    }
+   
+    .row{
+      display:grid !important;
+      grid-template-columns: auto auto auto auto !important;
+      justify-content: center;
+      align-items: center;
+      .col{
+          width:400px !important;
+      }
+  }
+    .question{
+      width:100%;
+  }
+
+  .mockup{
+    text-align:left !important;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px !important;
+    font-size:20px;
+    div {
+      width:50%;
+      margin:auto 50px;
+      padding:10px;
+    }
+    img{
+      width:40% !important;
+    }
+  }
+  }
