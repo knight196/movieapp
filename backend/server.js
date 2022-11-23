@@ -32,9 +32,6 @@ app.use('/api/', Admindashboard)
 //mongoose
 mongoose.connect(process.env.MONGODB_URI)
 
-  app.use(express.static(path.join(__dirname, '../frontend/build')))
-app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
-
 
 // API for PAYMENT
 
@@ -92,6 +89,10 @@ app.post('/api/subscribe', async (req,res)=> {
     res.status(500).json({message: 'internal server error'})
   }
 })
+
+app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+
 
 // app.get('/v1/charges', async (req,res) => {
 //   const payment = await stripe.charges.list({
