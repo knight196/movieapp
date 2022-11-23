@@ -32,8 +32,8 @@ app.use('/api/', Admindashboard)
 //mongoose
 mongoose.connect(process.env.MONGODB_URI)
 
-  app.use(express.static(path.join(__dirname, '../client/build')))
-app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../client/build/index.html')))
+  app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
 // API for PAYMENT
