@@ -38,13 +38,6 @@ app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/
 
 // API for PAYMENT
 
-app.get("/config", (req, res) => {
-  res.send({
-    publishableKey: 'pk_test_51KvRtLCBeZgGbHL5oKH0rBAXmqORHdfqdgWuJMqH0HIhQ9sMlrAYHm47FSlLQ65AF40INSKr9GX7Jf4Girib2TTw00fg6sdATf'
-  });
-});
-
-
 
 app.post('/api/subscribe', async (req,res)=> {
   try{
