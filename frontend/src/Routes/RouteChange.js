@@ -34,25 +34,21 @@ useEffect(()=> {
   recieveaddedbookmark()
 },[])
 
-
-
-const handleAddProduct = async (product) => {
-  const ProductExist = cartItems.find((item) => item.id === product.id)
-  if(ProductExist){
-    setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
-   quantity: ProductExist.quantity + 0} : item))
-toast.warning('You have already added this movie to your list')
-    }else{
-      setCartItem([...cartItems, {...product, quantity: 1}])
-      toast.success('added to your movie list')
-      await axios.post('/orders/add/bookmark', {cartItems:product,email:user?.email})
+  const handleAddProduct = async (product) => {
+  const ProductExist = cartItems.find((item) => item.id === product.id) 
+    if(ProductExist){
+      setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
+        quantity: ProductExist.quantity + 0} : item))
+        toast.warning('You have already added this movie to your list')
+    }
+      else{
+        setCartItem([...cartItems, {...product, quantity: 1}])
+        toast.success('added to your movie list')
+        await axios.post('/orders/add/bookmark', {cartItems:product,email:user?.email})
     }
   }
 
-
     const stripePromise = loadStripe('pk_test_51KvRtLCBeZgGbHL5oKH0rBAXmqORHdfqdgWuJMqH0HIhQ9sMlrAYHm47FSlLQ65AF40INSKr9GX7Jf4Girib2TTw00fg6sdATf')
-
-
 
   return (
     <div>

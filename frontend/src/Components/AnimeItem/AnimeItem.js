@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom'
 
 import {motion} from 'framer-motion'
 
-
+import { useStateValue } from '../../StateProvider'
 
 const AnimeItem = ({filter,handleAddProduct}) => {
 
+
+    const [{user}, dispatch] = useStateValue()
 
    
     
@@ -37,6 +39,7 @@ const AnimeItem = ({filter,handleAddProduct}) => {
 
     return (
 
+    
         <>
 
 {filter.map((item) => (
@@ -65,7 +68,25 @@ const AnimeItem = ({filter,handleAddProduct}) => {
   </div>
 
         </div>
-        <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
+        
+
+    {!user ? 
+            
+            (
+                
+                <Link to='/Login'>
+            <div className="btn-appear">Add To Fav</div>
+    </Link>
+        ):
+        (
+            <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
+            )
+    }
+
+        
+        
+
+        
             </motion.div>
         
         )
