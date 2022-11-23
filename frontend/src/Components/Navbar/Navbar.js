@@ -1,12 +1,25 @@
-import React, {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {NavLink,useNavigate} from 'react-router-dom'
 import {useStateValue} from '../../StateProvider'
 import {isAuthenticated, logout} from '../../helpers/auth'
 import  {toast} from 'react-toastify'
 import './Navbar.css'
+import axios from 'axios'
 export default function Navbar() {
 
     const [{ basket, user }, dispatch] = useStateValue();
+
+    const [orders,setOrders] = useState([])
+
+    const getOrders = async () => {
+      const res = await axios.post('/orders/get', {email:user.email})
+      setOrders(res.data)
+    }
+
+useEffect(() => {
+getOrders()
+},[])
+
     const navigate = useNavigate();
 
     const signOut = () => {
@@ -24,6 +37,12 @@ export default function Navbar() {
   // menubar for navbar
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
+  const bookmark = () => {
+    setTimeout(function(){
+      window.location.href='/bookmark'
+    })
+  }
 
 
   return (
@@ -72,17 +91,28 @@ export default function Navbar() {
 }
     </div>
           <li><NavLink style={{textDecoration:'none'}}   exact to="/">Home</NavLink></li>
-          <li><NavLink style={{textDecoration:'none'}} to="/plans">Plans</NavLink></li>
+         {orders.length === 1 ? (
+          <></>
+          ): 
+          (
+            <li><NavLink style={{textDecoration:'none'}} to="/plans">Plans</NavLink></li>
+          )
+          }
+         
           <li><NavLink style={{textDecoration:'none'}} to="/ExploreNow">ExploreNow</NavLink></li>
           {isAuthenticated() && isAuthenticated().role === 0 && (
+            <>
         <li>
        <NavLink to="/user/dashboard">Dashboard</NavLink>
     </li>
+    <li>
+      <NavLink to="/bookmark" onClick={bookmark}>Bookmark</NavLink>
+    </li>
+            </>
   )}
   {isAuthenticated() && isAuthenticated().role === 1 && (
     <li>
        <NavLink to="/admin/dashboard">Dashboard</NavLink>
-    
        </li>
   )}
 

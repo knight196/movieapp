@@ -1,23 +1,18 @@
 import React,{useState,useEffect} from 'react'
 import {motion} from 'framer-motion'
 import AnimeItem from '../AnimeItem/AnimeItem';
-import Favorite from '../Favorite/Favorite'
 import Filter from '../Filter/Filter'
 
 const animeapi = 'https://api.themoviedb.org/3/movie/upcoming?api_key=c404a2d1ca7a02e14fef1e3cf05b5770&language=en-US&page=1';
 const searchanime = "https://api.themoviedb.org/3/search/movie?&api_key=c404a2d1ca7a02e14fef1e3cf05b5770&query="
 
-const Anime = () => {
+const Anime = ({cartItems,handleAddProduct}) => {
 
     const [searchTerm,setSearchTerm] = useState('');
 
     const [movieData,setMovieData] = useState([])
     const [filter,setFiltered] = useState([])
     const [activeGenre,setActiveGenre] = useState(0)
-
-const saveToLocalStorage = JSON.parse(localStorage.getItem('cartItems') || '[]')
-
-    const [cartItems,setCartItem] = React.useState(saveToLocalStorage)
 
     const getMovies = (animeapi) =>{
         fetch(animeapi)
@@ -51,36 +46,7 @@ const saveToLocalStorage = JSON.parse(localStorage.getItem('cartItems') || '[]')
     }
       }
 
-      useEffect(()=> {
-        localStorage.setItem('cartItems', JSON.stringify(cartItems))
-      },[cartItems])
-
-
-       const handleAddProduct = (product) => {
-        const ProductExist = cartItems.find((item) => item.id === product.id)
-        if(ProductExist){
-          setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
-         quantity: ProductExist.quantity + 0} : item))
-         alert('You have already added this movie')
-       
-          }else{
-            setCartItem([...cartItems, {...product, quantity: 1}])
-           
-          }
-      }
-
-      const handleRemoveProduct = (product) => {
-        const ProductExist = cartItems.find((item) => item.id === product.id)
-        if(ProductExist.quantity === 1){
-          setCartItem(cartItems.filter((item) => item.id !== product.id))
-        
-          }
-          else{
-            setCartItem(
-           cartItems.map((item) => item.id === product.id ? {...ProductExist, quantity: ProductExist.quantity - 1 } : item))
-          }
-        }
-      
+    
 
      
     return (
@@ -99,9 +65,6 @@ const saveToLocalStorage = JSON.parse(localStorage.getItem('cartItems') || '[]')
 </div>
 
 
-<div className="fav">
-  <Favorite cartItems={cartItems} handleRemoveProduct={handleRemoveProduct}/>
-</div>
 
 <div id='filter-anime'>
 <Filter handleAddProduct={handleAddProduct} setActiveGenre={setActiveGenre} setFiltered={setFiltered} activeGenre={activeGenre} movieData={movieData}/>

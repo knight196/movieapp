@@ -39,9 +39,9 @@ export default function Messagetab() {
       {msgupdate.map((msg)=>
             <>
           <div className="d-flex my-1 py-2 bg-white bg-opacity-50 justify-content-between align-items-center px-2">
-        <Link to={!msg.order_id ? `/orders/addcontactmsg/_id/${msg._id}` : `/orders/get/_id/${msg.order_id}`}>
+      
           <p>{msg.username} : {msg.message}</p>
-        </Link>
+      
         <button className="bg-danger border-0 px-2 btn" onClick={()=> deletelist(msg._id)}>Delete</button>
           </div>
         </>

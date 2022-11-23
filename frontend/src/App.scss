@@ -61,14 +61,6 @@ div{
   }
 }
 
-.fav{
-  display:flex;
-  overflow-x:auto;
-
-  div{
-    margin:10px;
-  }
-}
 
 .mobile-icon{
   display:flex;
@@ -95,11 +87,6 @@ div{
     right:10px;
   }
 }
-
-.fav{
-  display:flex;
-  overflow-x:scroll;
-}
 .anime-card{
   background:whitesmoke;
   border-radius: 5px;
@@ -121,19 +108,13 @@ right:0;
 left:0;
 cursor:pointer;
 }
-.fav-card{
-  background:whitesmoke;
-  border-radius: 5px;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
-  position: relative;
-}
-.remove-appear{
+.fav-remove{
  position: absolute;
  right:0;
  border-radius: 0 0 5px 5px;
- left:-10px;
+ left:0;
  background:black;
- bottom:-10px;
+ bottom:0;
  color:white;
  width:100%;
 cursor:pointer;
@@ -251,6 +232,23 @@ svg circle{
   width:100%;
   display:flex;
   justify-content:center;
+}
+.favadded{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  grid-gap:10px;
+}
+
+.fav-card{
+background:whitesmoke;
+border-radius: 5px;
+box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+overflow:hidden;
+position: relative;
+img{
+  width:100%;
+  height:300px;
+}
 }
 
 @include for-size(tablet){

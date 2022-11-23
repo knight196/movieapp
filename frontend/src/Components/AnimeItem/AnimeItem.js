@@ -5,8 +5,12 @@ import {Link} from 'react-router-dom'
 import {motion} from 'framer-motion'
 
 
+
 const AnimeItem = ({filter,handleAddProduct}) => {
 
+
+   
+    
     function getColor(score){
         if(score >= 7){
             return 'text-success';
@@ -28,6 +32,8 @@ const AnimeItem = ({filter,handleAddProduct}) => {
             return 'red';
         }
     }
+
+
 
     return (
 

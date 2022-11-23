@@ -51,7 +51,7 @@
 }
 
 
-.order-cancelled,.delivered,.returned,.refunded{
+.order-cancelled{
 position:absolute;
 background-color: lightgray;
 width:100%;
@@ -63,9 +63,10 @@ font-weight: bold;
 font-size: 30px;
 opacity:0;
 top:0;
+pointer-events: none;
 transition:0.5s all;
 }
-.order-cancelled.show, .delivered.show, .returned.show, .refunded.show{
+.order-cancelled.show{
     opacity:0.5;
 }
 

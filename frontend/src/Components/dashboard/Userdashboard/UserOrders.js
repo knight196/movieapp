@@ -3,6 +3,7 @@ import '../dashboard.css'
 import axios from 'axios'
 import {useStateValue} from '../../../StateProvider'
 import {Link} from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 export default function UserOrders() {
 
@@ -22,68 +23,78 @@ const [orders,setOrders] = useState([]);
 },[])
 
 
+const [cancelOrder, setcancelOrder] = useState(orders)
+
+const cancel = async () => {
+  await axios.post('/orders/adminmessage', {
+    order_id:orders?._id,
+    username:user?.username,
+    message:'wants to cancel membership'
+  })
+  await axios.post('/orders/addusermessage', {
+    order_id:orders?._id,
+    username:user?.username,
+    message:'Your cancellation request has been received'
+  })
+  toast.success('Your cancellation request has been received');
+  setTimeout(function(){
+  window.location.href="/user/dashboard"
+  },1500)
+  }
+
+
+
 
   return (
     <div>
     {user === null && (window.location.href="/Login")}
 
+    
+
 {user !== null && (
+
+
+
    <div>
+
+
+
    {orders.map((order)=> (
-         <div className="d-flex my-2 py-2 justify-content-between bg-secondary bg-opacity-50 customer-details" style={{position:'relative'}}>
+         <div className="bg-secondary bg-opacity-50" style={{position:'relative'}}>
      
      <div>
-       <h5>Product Detail</h5>
-     {order.products.slice(0,1).map((item) => (
+       <h5>Membership Detail</h5>
+     {order.paymentId.slice(0,1).map((item) => (
 
-       <Link to={`/orders/get/_id/${order._id}`}>
-
-       <div className="d-flex align-items-center justify-content-between user-orders-card px-2">
-       
-       <div>
-       <img style={{width:'200px', height:'200px'}} src={ item.image} alt={item.title}/>
-       </div>
+     
+<>
+       <div className="d-flex align-items-center justify-content-between px-2">
        
        <div className="user-orders-card-info">
-       <p>Name: {item.title}</p>
+       <p>Plans: {item.plans}</p>
        <p>Price: £{item.price}</p>
-       <p>Color: {item.color}</p>
-       <p>Storage: {item.size}</p>
        </div>
 
        <div className="user-orders-card-info-date">
-         <small>Username: {order?.username}</small>
-         <br></br>
-   <small>Placed Date</small>
+   <small>Active Date</small>
    <br></br>
  <small>{order?.createdAt.slice(0,10)}</small>
  </div>
+
+
  
        
        </div>
 
-
-       <div className={order.Cancel === true || order.Refund === true  ? 'd-none' : 'd-block'}>
-       <p className={order.Delivered === false ? 'delivered': 'delivered show'}>{order.Return === false ? 'DELIVERED' : 'RETURNED'}</p>
-       </div>
-
-       {order.Refund === true ? 
-       
-      
-      (
-        <p className={order.Refund  === false ? 'refunded': 'refunded show'}>REFUNDED</p>
-        )
-        :
-        (
+          <button style={{margin:'auto'}} className="d-block btn px-2 bg-warning border-0"  onClick={()=> {cancel(orders._id);setcancelOrder(orders._id,!cancelOrder)}}>Cancel</button>
           
-          <p className={order.Cancel  === false ? 'order-cancelled': 'order-cancelled show'}>ORDERCANCELLED</p>
-      )
+          <p className={order.Cancel  === false ? 'order-cancelled': 'order-cancelled show'}>CANCELLED</p>
+      
     
-    }      
-
+          
        
-       
-       </Link>
+     </>  
+     
        ))}
 
        </div>

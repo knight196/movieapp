@@ -2,6 +2,7 @@ const Orders = require('../Schema/Orders')
 const express = require('express')
 const usermessage = require('../Schema/usermessage')
 const adminmessage = require('../Schema/adminmessage')
+const Bookmark = require('../Schema/Bookmark')
 
 const router = express.Router();
 
@@ -25,22 +26,71 @@ router.get('/addcontactmsg/_id/:id', async (req,res)=> {
     }
   })
 
+
+  //api for bookmark movie 
+  router.post('/add/bookmark', async (req,res) => {
+    const cartItems = req.body.cartItems
+    const email = req.body.email
+
+    const bookmarklist = {
+      cartItems,
+      email:email
+    }
+
+  Bookmark.create(bookmarklist,(err,result) => {
+    if(err){
+      console.log(err)
+    }else{
+      console.log('bookmark added to database', result)
+    }
+  })  
+  
+  })
+
+//addedbookmark for specific user
+  router.post('/get/addedbookmark', (req,res) => {
+
+    const email = req.body.email;
+  
+    Bookmark.find((err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        const userBookmark = result.filter((order) => order.email === email);
+        res.send(userBookmark);
+      }
+    });
+
+  })
+
+
+  //delete the bookmarks from the user 
+
+  router.delete('/get/:id', async (req,res) => {
+    try{
+      const deleteId = await Bookmark.findByIdAndDelete(req.params.id)
+      if(!req.params.id){
+        return res.status(400).send()
+      }
+      res.send(deleteId)
+    }catch(err){
+      res.status(500).send(err)
+    }
+  })
+
+
   //api for orders
 // API TO add ORDER DETAILS
 
 router.post("/add", (req, res) => {
-    const products = req.body.basket;
+    const paymentId = req.body.paymentId
     const price = req.body.price;
     const email = req.body.email;
-    const username = req.body.username
-    const address = req.body.address;
   
     const orderDetail = {
-      products: products,
+      paymentId,
       price: price,
-      address: address,
       email: email,
-      username:username,
     };
   
     Orders.create(orderDetail, (err, result) => {

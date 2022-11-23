@@ -1,11 +1,14 @@
-import React from 'react'
+import {useState,useEffect} from 'react'
 import data from '../../data'
 
 export default function Plans() {
  
 
+
   return (      
   <>
+  <hr></hr>
+
       <div className="pricing">
   {data.map((item) => (
      
@@ -28,13 +31,14 @@ export default function Plans() {
               <li>{item.servicefive}</li>
               <li>16% discount on Monthly Plan (billed every 12 months)</li>
               </ul>
-              <button type="button" className="w-100 btn btn-lg btn-primary"><a className="text-white" style={{textDecoration:'none'}} href={item.link}>Get Started</a></button>
+              <button type="button" className="w-100 btn btn-lg btn-primary"><a className="text-white" style={{textDecoration:'none'}} href={`/payment/${item.plans}`}>Get Started</a></button>
             </div>
           </div>
         </div>
         </div>
   ))}
   </div>
+
     </>
   )
 }

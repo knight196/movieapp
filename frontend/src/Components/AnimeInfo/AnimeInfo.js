@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState,useEffect} from 'react'
 
 import {useParams} from 'react-router-dom'
 
@@ -13,7 +13,7 @@ const Animeinfo = () => {
 
     const {AnimeItem} = useParams()
 
-React.useEffect(() => {
+useEffect(() => {
 
     if(AnimeItem!==""){
         fetch(`https://api.themoviedb.org/3/movie/${AnimeItem}?api_key=c404a2d1ca7a02e14fef1e3cf05b5770`)

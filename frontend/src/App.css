@@ -55,17 +55,6 @@ body {
   z-index: 1;
 }
 
-.fav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-}
-
-.fav div {
-  margin: 10px;
-}
-
 .mobile-icon {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -96,13 +85,6 @@ body {
   right: 10px;
 }
 
-.fav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: scroll;
-}
-
 .anime-card {
   background: whitesmoke;
   border-radius: 5px;
@@ -128,21 +110,13 @@ body {
   cursor: pointer;
 }
 
-.fav-card {
-  background: whitesmoke;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-  position: relative;
-}
-
-.remove-appear {
+.fav-remove {
   position: absolute;
   right: 0;
   border-radius: 0 0 5px 5px;
-  left: -10px;
+  left: 0;
   background: black;
-  bottom: -10px;
+  bottom: 0;
   color: white;
   width: 100%;
   cursor: pointer;
@@ -297,6 +271,28 @@ svg circle {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.favadded {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+
+.fav-card {
+  background: whitesmoke;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+
+.fav-card img {
+  width: 100%;
+  height: 300px;
 }
 
 @media (min-width: 720px) {

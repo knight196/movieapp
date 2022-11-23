@@ -38,7 +38,7 @@ const signOut = () => {
 
     <div className="tabs-block">
       <div className={toggleState ===1 ? "active-tabs" : "tabs"} onClick={() => toggleTab(1)}>Profile</div>
-      <div className={toggleState ===2 ? "active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Orders</div>
+      <div className={toggleState ===2 ? "active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Membership</div>
       <div className={toggleState ===3 ? "active-tabs" : "tabs"} onClick={() => toggleTab(3)}>Message</div>
     </div>
 
@@ -66,6 +66,7 @@ const signOut = () => {
 <Messagetab/>
 
     </div>
+
 
     </div>
 
