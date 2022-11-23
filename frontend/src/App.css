@@ -276,8 +276,8 @@ svg circle {
 .favadded {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto auto auto;
-      grid-template-columns: auto auto auto;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
   grid-gap: 10px;
 }
 
@@ -314,6 +314,13 @@ svg circle {
   }
   .filter-btn button {
     font-size: 15px;
+  }
+  .favadded {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto auto;
+        grid-template-columns: auto auto auto;
+    grid-gap: 10px;
   }
 }
 
@@ -388,6 +395,13 @@ svg circle {
   }
   .mockup img {
     width: 40% !important;
+  }
+  .favadded {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
   }
 }
 /*# sourceMappingURL=App.css.map */

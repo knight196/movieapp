@@ -41,8 +41,16 @@ function scoreRating(score){
     {recieveadded.map((item) => (
       <>
         <div className="fav-card bg-white text-center p-2" key={item.id}>
-      {item.cartItems?.map(item => (
+      {item.cartItems?.map(item => (      
         <>
+
+{item.id === item.title ? 
+(
+  <>
+  </>
+): (
+
+<>
        <Link to={`/AnimeInfo/${item.id}`}>
         <img  src={`https://image.tmdb.org/t/p/w500` + item.backdrop_path} alt=""></img>
         </Link>
@@ -67,10 +75,14 @@ function scoreRating(score){
             </div>
 
             </div>
+            </>
+)
+}
     
         </>
-    ))}
-        <div className="fav-remove" onClick={()=>handleRemoveProduct(item._id)}>Remove</div>
+        
+))}
+<div className="fav-remove" onClick={()=>handleRemoveProduct(item._id)}>Remove</div>
     </div>
         </>
         ))}

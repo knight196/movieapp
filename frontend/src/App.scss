@@ -235,7 +235,7 @@ svg circle{
 }
 .favadded{
   display:grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto;
   grid-gap:10px;
 }
 
@@ -269,6 +269,11 @@ img{
   button{
     font-size:15px;
   }
+}
+.favadded{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  grid-gap:10px;
 }
 }
 
@@ -328,5 +333,10 @@ display:flex;
   img{
     width:40% !important;
   }
+}
+.favadded{
+  display:grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap:10px;
 }
 }

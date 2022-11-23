@@ -16,6 +16,7 @@ import {useStateValue} from '../StateProvider'
 import Payment from '../Components/Payment/Payment'
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
+import {toast} from 'react-toastify'
 export default function RouteChange() {
 
   const [{user},dispatch]  = useStateValue()
@@ -39,10 +40,11 @@ const handleAddProduct = async (product) => {
   const ProductExist = cartItems.find((item) => item.id === product.id)
   if(ProductExist){
     setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
-   quantity: ProductExist.quantity + 1} : item))
-alert('you have added the movie')
+   quantity: ProductExist.quantity + 0} : item))
+toast.success('You have already added this movie to your list')
     }else{
       setCartItem([...cartItems, {...product, quantity: 1}])
+   
       await axios.post('/orders/add/bookmark', {cartItems:product,email:user?.email})
     }
   }
