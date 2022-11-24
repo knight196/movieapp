@@ -64,7 +64,7 @@ app.post('/api/subscribe', async (req,res)=> {
           price_data:{
             currency:'GBP',
             product:product.id,
-            unit_amount:price,
+            unit_amount:price * 100 / 100,
             recurring:{
               interval:'month'
             }
@@ -80,7 +80,7 @@ app.post('/api/subscribe', async (req,res)=> {
   
     res.json({
       message:'subscription successful',
-      clientSecret:subscription.latest_invoice.payment_intent,
+      clientSecret:subscription.latest_invoice.payment_intent.client_secret,
       subscriptionId:subscription.id
     })
     
@@ -90,8 +90,8 @@ app.post('/api/subscribe', async (req,res)=> {
   }
 })
 
-app.use(express.static(path.join(__dirname, '../frontend/build')))
-app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+// app.use(express.static(path.join(__dirname, '../frontend/build')))
+// app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
 // app.get('/v1/charges', async (req,res) => {
