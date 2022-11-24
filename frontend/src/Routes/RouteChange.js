@@ -17,6 +17,8 @@ import Payment from '../Components/Payment/Payment'
 import {Elements} from '@stripe/react-stripe-js'
 import {loadStripe} from '@stripe/stripe-js'
 import {toast} from 'react-toastify'
+import Usercontactmsg from '../Components/dashboard/Userdashboard/Usercontactmsg'
+import AdminContactmsg from '../Components/dashboard/Admindashboard/AdminContactmsg'
 export default function RouteChange() {
 
   const [{user},dispatch]  = useStateValue()
@@ -63,6 +65,8 @@ useEffect(()=> {
           <Route path="/Signup" exact element={<Signup/>}/>
           <Route path="/user/dashboard" element={<Userdashboard/>}/>
           <Route path="/admin/dashboard" element={<Admindashboard/>}/>
+          <Route  path="/orders/addcontactmsg/_id/:id" element={<Usercontactmsg/>}/>
+          <Route  path="/api/addcontactmsg/_id/:id" element={<AdminContactmsg/>}/>
           <Route  path="/Contact" element={<Contact/>}/>
           <Route  path="/bookmark" element={<Bookmark recieveadded={recieveadded}/>}/>
           <Route path="/payment/:id" element={<Elements stripe={stripePromise}><Payment/></Elements>}/>

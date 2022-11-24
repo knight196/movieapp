@@ -46,7 +46,7 @@ const cancel = async (id) => {
   return (
     <div>
       {orders.map((order)=> (
-            <div  className="bg-secondary bg-opacity-50" style={{position:'relative'}}>
+            <div  className="bg-secondary bg-opacity-50 mt-2 p-2" style={{position:'relative'}}>
         
         <div>
           <h5>Product Detail</h5>
@@ -70,7 +70,8 @@ const cancel = async (id) => {
        
        </div>
   
-       <button style={{margin:'auto'}} className={'d-block btn px-2 bg-warning border-0 m-1' } onClick={()=> {cancel(order._id);setcancelOrder(order._id,!cancelOrder)}}>Cancel</button>
+       <button style={{margin:'auto'}} className="d-block btn px-2 bg-warning border-0"  onClick={()=> {cancel(order._id);setcancelOrder(order._id,!cancelOrder)}}>Cancel</button>
+  
           
           <p className={order.Cancel  === false ? 'order-cancelled': 'order-cancelled show'}>CANCELLED</p>
     

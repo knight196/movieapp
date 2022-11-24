@@ -90,8 +90,7 @@ const cancel = async () => {
           
           <p className={order.Cancel  === false ? 'order-cancelled': 'order-cancelled show'}>CANCELLED</p>
       
-    
-          
+
        
      </>  
      

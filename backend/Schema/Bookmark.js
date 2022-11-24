@@ -4,6 +4,7 @@ const Bookmarkmovie = new mongoose.Schema(
     {
         cartItems:Array,
         email: String,
+        addedbookmark:{type:Boolean,default:true},
     },
     {timestamps: true}
 )

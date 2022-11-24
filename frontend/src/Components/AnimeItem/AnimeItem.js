@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 import {Link} from 'react-router-dom'
 
 import {motion} from 'framer-motion'
+
+import axios from 'axios'
 
 import { useStateValue } from '../../StateProvider'
 
@@ -11,6 +13,19 @@ const AnimeItem = ({filter,handleAddProduct}) => {
 
     const [{user}, dispatch] = useStateValue()
 
+
+    const [addedbookmark,setaddedbookmark] = useState([])
+
+    const getadded = async () => {
+        const res = await axios.post('/orders/get/addedbookmark', {email:user.email})
+        setaddedbookmark(res.data)
+    }
+
+    useEffect(() => {
+        getadded()
+    },[])
+
+    console.log(addedbookmark)
    
     
     function getColor(score){
@@ -68,24 +83,21 @@ const AnimeItem = ({filter,handleAddProduct}) => {
   </div>
 
         </div>
-        
 
-    {!user ? 
+
+            {!user ? 
             
+                (
+                    
+                    <Link to='/Login'>
+                <div className="btn-appear">Add To Fav</div>
+        </Link>
+            ):
             (
-                
-                <Link to='/Login'>
-            <div className="btn-appear">Add To Fav</div>
-    </Link>
-        ):
-        (
-            <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
-            )
-    }
-
+                <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
+                )
+        }
         
-        
-
         
             </motion.div>
         

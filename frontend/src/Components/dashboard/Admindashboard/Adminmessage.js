@@ -34,7 +34,9 @@ const deletemsg= async (id) => {
       {usermsg.map((item)=> (
         <div className="d-flex my-1 py-1 justify-content-between align-items-center bg-white bg-opacity-50 p-2">
         
+        <Link style={{textDecoration:'none'}} className="text-dark" to={`/api/addcontactmsg/_id/${item._id}`}>
         <p>{item.username} : {item.message}</p>
+        </Link>
           
           <button className="bg-danger btn" onClick={()=> deletemsg(item._id)}>Delete</button>
         </div>
