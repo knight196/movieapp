@@ -90,8 +90,8 @@ app.post('/api/subscribe', async (req,res)=> {
   }
 })
 
-// app.use(express.static(path.join(__dirname, '../frontend/build')))
-// app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
+app.use(express.static(path.join(__dirname, '../frontend/build')))
+app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
 // app.get('/v1/charges', async (req,res) => {
