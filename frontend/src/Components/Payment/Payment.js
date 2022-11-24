@@ -90,8 +90,10 @@ setTimeout(function(){
   window.location.href='/'
 })
 
+if(!response.ok) return alert('Payment unsuccessful')
 const data = await response.json();
-await stripe.confirmCardPayment(data.clientSecret)
+const confirm = await stripe.confirmCardPayment(data.clientSecret)
+if(confirm.error) return alert('Payment Unsuccessful')
 alert('payment successful subscribed')
 }catch(err){
   console.log(err); alert('payment failed' + err.message)
