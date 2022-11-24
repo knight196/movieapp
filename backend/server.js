@@ -62,7 +62,7 @@ app.post('/api/subscribe', async (req,res)=> {
       items:[
         {
           price_data:{
-            currency:'USD',
+            currency:'GBP',
             product:product.id,
             unit_amount:price * 100 / 100,
             recurring:{
