@@ -64,7 +64,7 @@ app.post('/api/subscribe', async (req,res)=> {
           price_data:{
             currency:'GBP',
             product:product.id,
-            unit_amount:price * 100 / 100,
+            unit_amount:price * 100 / 10,
             recurring:{
               interval:'month'
             }
