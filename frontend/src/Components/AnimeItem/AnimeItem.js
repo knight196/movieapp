@@ -10,6 +10,18 @@ import { useStateValue } from '../../StateProvider'
 
 const AnimeItem = ({filter,handleAddProduct}) => {
 
+    const [recieveadded,setrecieveadded] = useState([])
+
+    const recieveaddedbookmark = async () => {
+      const res = await axios.post('/orders/get/addedbookmark', {email:user.email})
+      setrecieveadded(res.data)
+    }
+    
+    useEffect(()=> {
+      recieveaddedbookmark()
+    },[])
+
+    console.log(recieveadded)
 
     const [{user}, dispatch] = useStateValue()
 
@@ -97,8 +109,7 @@ const AnimeItem = ({filter,handleAddProduct}) => {
                 <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
                 )
         }
-        
-        
+  
             </motion.div>
         
         )

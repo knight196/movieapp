@@ -121,8 +121,9 @@ alert('payment successful subscribed')
 
             <div className="text-center p-2">
 
-   
-         <CardElement/>
+        
+          <CardElement/>
+        
     <button onClick={handleSubmitSub} className="border-0 px-2 py-1 rounded-1 bg-primary text-white">Subscribe</button>
       
 

@@ -57,7 +57,7 @@ useEffect(()=> {
       
 <Routes>
   <Route exact path="/" element={<Home />}/>
-  <Route path="/ExploreNow" element={<Explore cartItems={cartItems} handleAddProduct={handleAddProduct}/>}/>
+  <Route path="/ExploreNow" element={<Explore recieveadded={recieveadded} handleAddProduct={handleAddProduct}/>}/>
   <Route path="/AnimeInfo/:AnimeItem" element={<AnimeInfo/>}/>
   <Route path="/Video/:VideoId" element={<Video/>}/>
   <Route path="/Login" exact element={<Login />}/>

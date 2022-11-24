@@ -6,7 +6,7 @@ import Filter from '../Filter/Filter'
 const animeapi = 'https://api.themoviedb.org/3/movie/upcoming?api_key=c404a2d1ca7a02e14fef1e3cf05b5770&language=en-US&page=1';
 const searchanime = "https://api.themoviedb.org/3/search/movie?&api_key=c404a2d1ca7a02e14fef1e3cf05b5770&query="
 
-const Anime = ({cartItems,handleAddProduct}) => {
+const Anime = ({handleAddProduct}) => {
 
     const [searchTerm,setSearchTerm] = useState('');
 
@@ -72,7 +72,7 @@ const Anime = ({cartItems,handleAddProduct}) => {
 
 <div>
 <motion.div layout className='animeshow text-center' id='animeshow'>
- <AnimeItem cartItems={cartItems} filter={filter} handleAddProduct={handleAddProduct}/>
+ <AnimeItem filter={filter} handleAddProduct={handleAddProduct}/>
 </motion.div>
 </div>
         </div>

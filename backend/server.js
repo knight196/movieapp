@@ -62,7 +62,7 @@ app.post('/api/subscribe', async (req,res)=> {
       items:[
         {
           price_data:{
-            currency:'GBP',
+            currency:'USD',
             product:product.id,
             unit_amount:price * 100 / 100,
             recurring:{
@@ -78,12 +78,12 @@ app.post('/api/subscribe', async (req,res)=> {
       expand:['latest_invoice.payment_intent']
     })
   
-  res.json({
-    message:'subscription successful',
-    clientSecret:subscription.latest_invoice.payment_intent.client_secret,
-    subscriptionId:subscription.id
-  })
-
+    res.json({
+      message:'subscription successful',
+      clientSecret:subscription.latest_invoice.payment_intent,
+      subscriptionId:subscription.id
+    })
+    
   }catch(err){
     console.log(err)
     res.status(500).json({message: 'internal server error'})
