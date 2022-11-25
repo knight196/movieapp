@@ -88,7 +88,7 @@ navigate("/");
 toast.success('Payment successful')
 setTimeout(function(){
   window.location.href='/'
-})
+},1000)
 
 if(!response.ok) return alert('Payment unsuccessful')
 const data = await response.json();

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require('dotenv')
 const path = require('path')
+const Stripe = require('stripe')
 const authRoutes = require("./routes/routesauth")
 const Userdashboard = require('./Userdashboard/Userorders')
 const Admindashboard = require('./Admindashboard/AdminOrders');
@@ -11,7 +12,7 @@ const Admindashboard = require('./Admindashboard/AdminOrders');
 dotenv.config();
 
 
-const stripe = require('stripe')('sk_test_51KvRtLCBeZgGbHL58Usym7RH0ZpLgI51HUJwT3VQRVje2Lctsg5zi36tuf4Z4XfJSPdtkq3evU5SJsDlGGwBoxBS00TZQtDJxa')
+const stripe = new Stripe ('sk_test_51KvRtLCBeZgGbHL58Usym7RH0ZpLgI51HUJwT3VQRVje2Lctsg5zi36tuf4Z4XfJSPdtkq3evU5SJsDlGGwBoxBS00TZQtDJxa')
 
 
 const app = express();
@@ -64,7 +65,7 @@ app.post('/api/subscribe', async (req,res)=> {
           price_data:{
             currency:'GBP',
             product:product.id,
-            unit_amount:price * 100 / 10,
+            unit_amount:price * 100,
             recurring:{
               interval:'month'
             }
