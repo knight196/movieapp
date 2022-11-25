@@ -1,7 +1,6 @@
 import {useState,useEffect} from 'react'
 import data from '../../data'
 import {useStateValue} from '../../StateProvider'
-import {Link} from 'rect-router-dom'
 
 export default function Plans() {
  
@@ -35,7 +34,7 @@ const [{user},dispatch] = useStateValue()
               </ul>
               {!user ? (
            
-               <button type="button" className="w-100 btn btn-lg btn-primary" href='/Login'>Get Started</button>
+               <button type="button" className="w-100 btn btn-lg btn-primary"><a className="text-white" style={{textDecoration:'none'}} href='/Login'>Get Started</a></button>
         
               ) : 
               (
