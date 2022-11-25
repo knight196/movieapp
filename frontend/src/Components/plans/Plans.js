@@ -1,9 +1,11 @@
 import {useState,useEffect} from 'react'
 import data from '../../data'
+import {useStateValue} from '../../StateProvider'
+import {Link} from 'rect-router-dom'
 
 export default function Plans() {
  
-
+const [{user},dispatch] = useStateValue()
 
   return (      
   <>
@@ -31,7 +33,14 @@ export default function Plans() {
               <li>{item.servicefive}</li>
               <li>16% discount on Monthly Plan (billed every 12 months)</li>
               </ul>
-              <button type="button" className="w-100 btn btn-lg btn-primary"><a className="text-white" style={{textDecoration:'none'}} href={`/payment/${item.plans}`}>Get Started</a></button>
+              {!user ? (
+           
+               <button type="button" className="w-100 btn btn-lg btn-primary" href='/Login'>Get Started</button>
+        
+              ) : 
+              (
+                <button type="button" className="w-100 btn btn-lg btn-primary"><a className="text-white" style={{textDecoration:'none'}} href={`/payment/${item.plans}`}>Get Started</a></button>
+              )}
             </div>
           </div>
         </div>
