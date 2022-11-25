@@ -6,6 +6,7 @@ const OrderSchema = mongoose.Schema(
   paymentId: Array,
   email: String,
   Cancel:{type:Boolean,default:false},
+  paymentMethod:Array
 },
 {
   timestamps:true

@@ -11,7 +11,7 @@ export default function UserOrders() {
     
 const [orders,setOrders] = useState([]);
 
-
+console.log(orders)
 
   const getorders = async () => {
     const res = await axios.post('/orders/get', {email:user.email})
@@ -79,6 +79,20 @@ const cancel = async () => {
    <small>Active Date</small>
    <br></br>
  <small>{order?.createdAt.slice(0,10)}</small>
+
+<div>
+{order.paymentMethod.map((item) => (
+  <>
+  <hr></hr>
+  <small style={{fontWeight:'bold'}}>Payment Info</small>
+  <br></br>
+  <small>Card: <i className={`h6 fa-brands fa-cc-${item.card.brand}`}></i></small>
+  <br></br>
+  <small>Ending in: {item.card.last4}</small>
+  </>
+))}
+</div>
+
  </div>
 
 

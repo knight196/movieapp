@@ -86,9 +86,11 @@ router.post("/add", (req, res) => {
     const paymentId = req.body.paymentId
     const price = req.body.price;
     const email = req.body.email;
+    const paymentMethod = req.body.body
   
     const orderDetail = {
       paymentId,
+      paymentMethod,
       price: price,
       email: email,
     };

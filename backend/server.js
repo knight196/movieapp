@@ -95,8 +95,8 @@ app.use(express.static(path.join(__dirname, '../frontend/build')))
 app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
 
 
-// app.get('/v1/charges', async (req,res) => {
-//   const payment = await stripe.charges.list({
+// app.get('/v1/subscriptions', async (req,res) => {
+//   const payment = await stripe.subscriptions.list({
 //     apiKey:'sk_test_51KvRtLCBeZgGbHL58Usym7RH0ZpLgI51HUJwT3VQRVje2Lctsg5zi36tuf4Z4XfJSPdtkq3evU5SJsDlGGwBoxBS00TZQtDJxa'
 //   })
 //   return res.json(payment)

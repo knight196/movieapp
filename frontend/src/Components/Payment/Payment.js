@@ -82,7 +82,8 @@ const response = await fetch ('/api/subscribe', {
 axios.post("/orders/add", {
   paymentId,
   email: user?.email,
-price:paymentId.price
+price:paymentId.price,
+body:paymentMethod.paymentMethod
 })
 navigate("/");
 toast.success('Payment successful')
