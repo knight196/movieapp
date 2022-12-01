@@ -24,20 +24,6 @@ const AnimeItem = ({filter,handleAddProduct}) => {
     console.log(recieveadded)
 
     const [{user}, dispatch] = useStateValue()
-
-
-    const [addedbookmark,setaddedbookmark] = useState([])
-
-    const getadded = async () => {
-        const res = await axios.post('/orders/get/addedbookmark', {email:user.email})
-        setaddedbookmark(res.data)
-    }
-
-    useEffect(() => {
-        getadded()
-    },[])
-
-    console.log(addedbookmark)
    
     
     function getColor(score){
@@ -66,7 +52,7 @@ const AnimeItem = ({filter,handleAddProduct}) => {
 
     return (
 
-    
+        
         <>
 
 {filter.map((item) => (
@@ -75,6 +61,7 @@ const AnimeItem = ({filter,handleAddProduct}) => {
             <Link to={`/AnimeInfo/${item.id}`}>
             <img  src={`https://image.tmdb.org/t/p/w500` + item.poster_path} alt=""></img>
             </Link>
+       
             <p className="title">{item.title}</p>
             <div className="d-flex align-items-center justify-content-between">
         <p>Rating</p>
@@ -109,8 +96,13 @@ const AnimeItem = ({filter,handleAddProduct}) => {
                 <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
                 )
         }
+
+
+
+
   
             </motion.div>
+
         
         )
     )

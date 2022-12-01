@@ -18,43 +18,6 @@ function Payment() {
 let stripe = useStripe();
 let elements = useElements()
 
-// const handleSubmitSub = async (event) => {
-//   if(!stripe || !elements){
-//     return;
-//   }
-
-//   const result = await stripe.createPaymentMethod({
-//     type:'card',
-//     card:elements.getElement(CardElement),
-//     billing_details:{
-//       email:user?.email,
-//       plan:paymentId.priceId,
-//     }
-//   })
-
-// if(result.error){
-//   console.log(result.error.message)
-// }else{
-//   const res = await axios.post('/sub', {'payment_method': result.paymentMethod.id, 'email': user?.email, 'plan':paymentId.plan})
-
-// const {client_secret, status} = res.data
-
-// if(status === 'requires_action'){
-//   stripe.confirmCardPayment(client_secret).then(function(result){
-//     if(result.error){
-//       console.log('There was an issue')
-//       console.log(result.error)
-//     }else{
-//       console.log('You got the money')
-//     }
-//   })
-// }else{
-//   console.log('you got the money')
-// }
-
-// }
-
-// }
 
 const handleSubmitSub = async() => {
 

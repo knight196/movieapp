@@ -42,7 +42,7 @@ useEffect(()=> {
       setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
         quantity: ProductExist.quantity + 0} : item))
         toast.warning('You have already added this movie to your list')
-    }
+      }
       else{
         setCartItem([...cartItems, {...product, quantity: 1}])
         toast.success('added to your movie list')
