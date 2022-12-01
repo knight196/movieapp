@@ -77,7 +77,7 @@ export default function Home() {
   <h2>Watch your favourite movies at anytime and anywhere on different devices</h2>
 <p>Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.</p>
     </div>
-  <img className="w-100 img-fluid py-5 pb-0" src="./images/mockup.jpg" alt=""/>
+  <img className="w-100 img-fluid py-5 pb-0" src="./images/Mockup.jpg" alt=""/>
   </div>
 </div>
 
