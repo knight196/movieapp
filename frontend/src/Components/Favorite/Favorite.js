@@ -44,7 +44,7 @@ function scoreRating(score){
       {item.cartItems?.map(item => (      
         <>
 
-{item.id === item.title ? 
+{item._id  === item.title ? 
 (
   <>
   </>

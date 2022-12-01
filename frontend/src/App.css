@@ -122,6 +122,19 @@ body {
   cursor: pointer;
 }
 
+.bookmark-show {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  color: white;
+  border-radius: 0 0 5px 5px;
+  left: 0;
+  right: 0;
+  pointer-events: auto;
+  cursor: default;
+  background: black;
+}
+
 .animeinfo {
   -webkit-box-pack: center;
       -ms-flex-pack: center;

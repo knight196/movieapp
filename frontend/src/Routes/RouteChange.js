@@ -37,15 +37,18 @@ useEffect(()=> {
 },[])
 
   const handleAddProduct = async (product) => {
-  const ProductExist = cartItems.find((item) => item.id === product.id) 
+  const ProductExist = cartItems.find((item) => item.title === product.title) 
     if(ProductExist){
-      setCartItem(cartItems.map((item) => item.id === product.id ? {...ProductExist,
+      setCartItem(cartItems.map((item) => item.title === product.title ? {...ProductExist,
         quantity: ProductExist.quantity + 0} : item))
         toast.warning('You have already added this movie to your list')
       }
       else{
         setCartItem([...cartItems, {...product, quantity: 1}])
         toast.success('added to your movie list')
+        setTimeout(function(){
+          window.location.href="/ExploreNow"
+        },1000)
         await axios.post('/orders/add/bookmark', {cartItems:product,email:user?.email})
     }
   }

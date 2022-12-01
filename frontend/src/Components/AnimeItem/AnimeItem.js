@@ -82,9 +82,11 @@ const AnimeItem = ({filter,handleAddProduct}) => {
   </div>
 
         </div>
+            
 
 
             {!user ? 
+
             
                 (
                     
@@ -93,11 +95,26 @@ const AnimeItem = ({filter,handleAddProduct}) => {
         </Link>
             ):
             (
+
+                <>
+               
+             
+                {recieveadded.map(cartitem => (
+                    <>
+                    {cartitem.cartItems.map(movieitem => {
+                        if(item.id === movieitem.id ){
+                            return(
+                                <div className="bookmark-show">added to bookmark</div>
+                            )
+                        }
+                    })}
+                    </>
+                ))}
                 <div className="btn-appear" onClick={()=>handleAddProduct(item)}>Add To Fav</div>
+                    
+                </>
                 )
         }
-
-
 
 
   
