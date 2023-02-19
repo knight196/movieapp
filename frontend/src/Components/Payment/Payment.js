@@ -1,8 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useNavigate } from "react-router-dom";
-import CheckoutForm from './Checkoutform'
 import { loadStripe } from "@stripe/stripe-js";
-import { useStripe, useElements,CardElement,Elements } from "@stripe/react-stripe-js";
+import { useStripe, useElements,CardElement,Elements, CardNumberElement,CardExpiryElement,CardCvcElement} from "@stripe/react-stripe-js";
 import axios from 'axios';
 import { useStateValue } from "../../StateProvider";
 import {toast} from 'react-toastify'
@@ -25,7 +24,7 @@ try{
 
 const paymentMethod = await stripe.createPaymentMethod({
   type:'card',
-  card:elements.getElement('card')
+  card:elements.getElement(CardNumberElement), 
 })
 
 const response = await fetch ('/api/subscribe', {
@@ -83,12 +82,31 @@ alert('payment successful subscribed')
         
                 <div className="cart-list bg-white mx-5 bg-opacity-50 h-50 px-2 border-2 rounded-1">
 
-            <div className="text-center p-2">
+            <div className="bg-white bg-opacity-50 p-2">
+
+            <small>Card Number</small>
+<CardNumberElement className="bg-white rounded-1 p-2"/>
+
+<div className="d-flex justify-content-between">
+  <div className="w-50">
+
+  <small>Expiry</small>
+            <CardExpiryElement className="bg-white p-2 rounded-1"/> 
+  </div>
+    
+            <div style={{marginLeft:'10px'}} className="w-50">
+            <small>CVC</small>
+            <CardCvcElement className="bg-white p-2 rounded-1"/>
+            </div>
+</div>
+         
 
         
-          <CardElement/>
+          {/* <CardElement/> */}
         
+        <div className="text-center">
     <button onClick={handleSubmitSub} className="border-0 px-2 py-1 rounded-1 bg-primary text-white">Subscribe</button>
+        </div>
       
 
 
