@@ -42,6 +42,14 @@ const cancel = async () => {
   },1500)
   }
 
+const deletelist = async (id) => {
+  await axios.delete(`/orders/delete/${id}`)
+  toast.success('Your product has been deleted successfully')
+  setTimeout(function() {
+    window.location.href="/user/dashboard"
+  },1500)
+
+}
 
 
 
@@ -57,11 +65,9 @@ const cancel = async () => {
 
    <div>
 
-
-
    {orders.map((order)=> (
          <div className="bg-secondary bg-opacity-50" style={{position:'relative'}}>
-     
+
      <div>
        <h5>Membership Detail</h5>
      {order.paymentId.slice(0,1).map((item) => (
@@ -100,21 +106,27 @@ const cancel = async () => {
        
        </div>
 
+
           <button style={{margin:'auto'}} className="d-block btn px-2 bg-warning border-0"  onClick={()=> {cancel(orders._id);setcancelOrder(orders._id,!cancelOrder)}}>Cancel</button>
+          <button className="d-block btn px-2 bg-danger border-0" onClick={()=>deletelist(order._id)}>Delete</button>
           
+
+
           <p className={order.Cancel  === false ? 'order-cancelled': 'order-cancelled show'}>CANCELLED</p>
-      
+
 
        
      </>  
      
-       ))}
+     ))}
 
        </div>
+
        
          </div>
          
-       ))}
+         
+         ))}
  </div>
   )}
   </div>

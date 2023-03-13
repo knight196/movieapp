@@ -138,9 +138,9 @@ router.put('/get/:id', async (req,res)=> {
   })
 
    // delete orders from user dashboard
-router.delete('/get/:id', async (req,res)=> {
+router.delete('/delete/:id', async (req,res)=> {
     try{
-      const deleteId = await Orders.findByIdAndDelete(req.params.id)
+      const deleteId = await Orders.findOneAndDelete(req.params.id)
       if(!req.params.id){
         return res.status(400).send()
       }

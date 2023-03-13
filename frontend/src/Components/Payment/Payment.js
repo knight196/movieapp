@@ -18,6 +18,10 @@ let stripe = useStripe();
 let elements = useElements()
 
 
+const currDate = new Date().toLocaleDateString()
+const currTime = new Date().toLocaleTimeString()
+
+
 const handleSubmitSub = async() => {
 
 try{
@@ -47,6 +51,16 @@ axios.post("/orders/add", {
 price:paymentId.price,
 body:paymentMethod.paymentMethod
 })
+
+axios.post('/api/sendemail', {
+  paymentId,
+  email:user?.email,
+  price:paymentId.price,
+  body:paymentMethod.paymentMethod,
+  date:currDate,
+  time:currTime
+})
+
 navigate("/");
 toast.success('Payment successful')
 setTimeout(function(){
