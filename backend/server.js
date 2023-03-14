@@ -113,10 +113,10 @@ app.post('/api/sendemail', async (req,res) => {
     const handlebarOptions = {
   viewEngine:{
     extName: '.handlebars',
-    partialDir: path.join(__dirname,'./views'),
+    partialDir: path.resolve(__dirname,'./views/'),
     defaultLayout:false
   },
-  viewPath:path.join(__dirname,'./views'),
+  viewPath:path.join(__dirname,'./views/'),
   extName:'.handlebars'
 }
 
