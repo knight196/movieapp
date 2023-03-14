@@ -10,6 +10,7 @@ const Userdashboard = require('./Userdashboard/Userorders')
 const Admindashboard = require('./Admindashboard/AdminOrders');
 const nodemailer = require('nodemailer')
 const hbs = require('nodemailer-express-handlebars')
+const bodyParser = require('body-parser')
 
 
 dotenv.config({path:path.resolve(__dirname, './.env')});
@@ -26,6 +27,8 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(morgan('dev'))
 app.use('/api/auth', authRoutes)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(cors())
 
 app.use('/orders', Userdashboard)
