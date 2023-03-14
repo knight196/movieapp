@@ -52,7 +52,14 @@ price:paymentId.price,
 body:paymentMethod.paymentMethod
 })
 
-
+axios.post('/api/sendemail', {
+  paymentId,
+  email:user?.email,
+  price:paymentId.price,
+  body:paymentMethod.paymentMethod,
+  date:currDate,
+  time:currTime
+})
 
 navigate("/");
 toast.success('Payment successful')
