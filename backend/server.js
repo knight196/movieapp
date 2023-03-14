@@ -97,57 +97,6 @@ app.post('/api/subscribe', async (req,res)=> {
 })
 
 
-app.post('/api/sendemail', async (req,res) => {
-
-  const {email,paymentId,price,body,date,time} = req.body
-
-
-  try{
-
-    var transporter = nodemailer.createTransport({
-      service:'hotmail',
-      auth:{
-        user:process.env.user,
-        pass:process.env.pass
-      }
-    })
-   
-    const handlebarOptions = {
-      viewEngine:{
-        extName: '.handlebars',
-        partialDir: path.resolve(__dirname,'./views'),
-        defaultLayout:false
-      },
-      viewPath:path.resolve(__dirname,'./views'),
-      extName:'.handlebars'
-    }
-    
-
-    transporter.use('compile', hbs(handlebarOptions))
-
-    var mailOptions = {
-      from:process.env.user,
-      to:email,
-      subject:'Subscription Confirmation',
-      template:'email',
-      context:{
-      email:email,
-      paymentId:paymentId,
-      price:price,
-      body:body,
-      date:date,
-      time:time
-      }
-    }
-
-    await transporter.sendMail(mailOptions)
-    res.status(200).json({success:true,message:'Email sent'})
-
-  }catch(err){
-    res.status(500).json(err.message)
-  }
-
-})
 
 app.use(express.static(path.join(__dirname, '../frontend/build')))
 app.use('/*', (req,res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')))
