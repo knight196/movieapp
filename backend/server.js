@@ -9,7 +9,7 @@ const authRoutes = require("./routes/routesauth")
 const Userdashboard = require('./Userdashboard/Userorders')
 const Admindashboard = require('./Admindashboard/AdminOrders');
 const nodemailer = require('nodemailer')
-const hbs = require('express-handlebars')
+const hbs = require('nodemailer-express-handlebars')
 
 
 dotenv.config({path:path.resolve(__dirname, './.env')});
