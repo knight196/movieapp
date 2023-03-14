@@ -112,7 +112,20 @@ app.post('/api/sendemail', async (req,res) => {
         pass:process.env.pass
       }
     })
-  
+   
+    const handlebarOptions = {
+  viewEngine:{
+    extName: '.handlebars',
+    partialDir: path.resolve(__dirname,'./views'),
+    defaultLayout:false
+  },
+  viewPath:path.resolve(__dirname,'./views'),
+  extName:'.handlebars'
+}
+
+
+    transporter.use('compile', hbs(handlebarOptions))
+
     var mailOptions = {
       from:process.env.user,
       to:email,
