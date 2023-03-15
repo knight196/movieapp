@@ -9,7 +9,7 @@ const authRoutes = require("./routes/routesauth")
 const Userdashboard = require('./Userdashboard/Userorders')
 const Admindashboard = require('./Admindashboard/AdminOrders');
 const nodemailer = require('nodemailer')
-const hbs = require('express-handlebars')
+const {engine} = require('express-handlebars')
 const bodyParser = require('body-parser')
 
 
@@ -113,18 +113,12 @@ app.post('/api/sendemail', async (req,res) => {
       }
     })
    
-    const handlebarOptions = {
-  viewEngine:{
-    extName: '.handlebars',
-    partialDir: path.resolve(__dirname,'./views'),
-    defaultLayout:false
-  },
-  viewPath:path.resolve(__dirname,'./views'),
-  extName:'.handlebars'
-}
+    app.engine('handlebars', engine())
+    app.set('view engine', 'handlebars')
+    app.set('views', './views')
+ 
 
-
-    transporter.use('compile', hbs(handlebarOptions))
+  
 
     var mailOptions = {
       from:process.env.user,
