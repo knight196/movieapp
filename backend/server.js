@@ -98,7 +98,7 @@ app.post('/api/subscribe', async (req,res)=> {
 })
 
 
-app.post('/api/sendemail', async (req,res) => {
+app.post('/api/sendemail', (req,res) => {
 
   const {email,paymentId,price,body,date,time} = req.body
 
@@ -143,7 +143,7 @@ app.post('/api/sendemail', async (req,res) => {
       }
     }
 
-    await transporter.sendMail(mailOptions)
+    transporter.sendMail(mailOptions)
     res.status(200).json({success:true,message:'Email sent'})
 
   }catch(err){
