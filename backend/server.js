@@ -115,12 +115,13 @@ app.post('/api/sendemail', async (req,res) => {
 
     const handlebarOptions = {
       viewEngine:{
-        extName: '.handlebars',
-        partialDir: path.resolve(__dirname,'./views'),
-        defaultLayout:false
+        extName: '.hbs',
+        partialDir: path.resolve(__dirname,'layouts/'),
+        layoutDir: path.resolve(__dirname,'layouts/'),
+        defaultLayout:'email'
       },
-      viewPath:path.resolve(__dirname,'./views'),
-      extName:'.handlebars'
+      extName:'.hbs',
+      viewPath:path.resolve(__dirname,'layouts/')
     }
     
     transporter.use('compile', hbs(handlebarOptions))    
