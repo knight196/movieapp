@@ -116,7 +116,7 @@ app.post('/api/sendemail', async (req,res) => {
 
 
 
-    transporter.use('compile', hbs(handlebarOptions))
+    
 
     var mailOptions = {
       from:process.env.user,
